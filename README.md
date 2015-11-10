@@ -1,6 +1,10 @@
 # hapi-react-handler
 
+<a href="http://pebblecode.com"><img src="http://i.imgur.com/mat11pe.png" align="right" /></a>
+
 This hapi plugin provides a route handler that taps into using react-router, allowing you to render isomorphic views.
+
+**hapi-react-handler** is sponsored by [Pebble{code}](http://pebblecode.com)
 
 ### Usage
 

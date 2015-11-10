@@ -1,0 +1,40 @@
+{
+  "env": {
+    "browser": 1,
+    "node": 1
+  },
+  "globals": {
+
+  },
+  "rules": {
+    "block-scoped-var": 2,
+    "camelcase": 1,
+    "curly": 1,
+    "eol-last": 1,
+    "eqeqeq": [1, "smart"],
+    "handle-callback-err": [2, "^(err|error|.+Error)$" ],
+    "max-depth": [1, 3],
+    "max-statements": [1, 30],
+    "max-len": [1, 120],
+    "new-cap": 1,
+    "no-debugger": 2,
+    "no-extend-native": 2,
+    "no-mixed-spaces-and-tabs": 2,
+    "no-new-require": 1,
+    "no-process-exit": 1,
+    "no-trailing-spaces": 1,
+    "no-use-before-define": [2, "nofunc"],
+    "no-unused-vars": 1,
+    "quotes": [1, "single", "avoid-escape"],
+    "semi": [2, "always"],
+    "space-after-keywords": [1, "always"],
+    "space-before-function-paren": [1,
+      {
+        "anonymous": "always",
+        "named": "always"
+      }],
+    "object-curly-spacing": [1, "always"],
+    "array-bracket-spacing": [1, "never"],
+    "strict": [2, "global"]
+  }
+}

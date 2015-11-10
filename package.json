@@ -11,19 +11,19 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab -t 100"
   },
   "author": "Tane Piper <piper.tane@gmail.com> (https://github.com/tanepiper)",
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/tanepiper/hapi-react-handler.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tanepiper/hapi-react-handler.git"
   },
   "bugs": {
     "url": "https://github.com/tanepiper/hapi-react-handler/issues"
   },
   "engines": {
-    "node" : ">=4.2.x"
+    "node": ">=4.2.x"
   },
   "peerDependencies": {
     "hapi": ">=11.x.x"
@@ -39,5 +39,10 @@
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-router": "^1.0.0"
+  },
+  "devDependencies": {
+    "code": "^2.0.1",
+    "hapi": "^11.1.0",
+    "lab": "^7.2.0"
   }
 }

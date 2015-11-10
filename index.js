@@ -9,7 +9,7 @@ const ReactHandler = require('./handler');
 
 const registerPlugin = function (server, options, next) {
 
-  server.handler('react', ReactHandler.handler(options.path.relativeTo));
+  server.handler('react', ReactHandler.handler);
 
   server.decorate('reply', 'react', function (path, responseOptions) {
 

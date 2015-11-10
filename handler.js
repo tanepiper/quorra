@@ -14,7 +14,7 @@ let internals = {};
 
 internals.schema = Joi.alternatives([
   Joi.object({
-    relativeTo: Join.string(),
+    relativeTo: Joi.string(),
     routerFile: Joi.string()
   })
 ]);
@@ -26,8 +26,8 @@ exports.handler = (route, options) => {
   settings.relativeTo = options.relativeTo;
   settings.routerFile = /\.jsx$/.test(settings.routerFile) ? settings.routerFile : settings.routerFile + '.jsx';
 
-  Hoek.assert(typeof settings.relativeTo !== 'string', 'Relative path of react files must be set', route.path);
-  Hoek.assert(typeof settings.routerFile !== 'string', 'Router file must be set', route.path);
+  Hoek.assert(typeof settings.relativeTo === 'string', 'Relative path of react files must be set', route.path);
+  Hoek.assert(typeof settings.routerFile === 'string', 'Router file must be set', route.path);
 
   return (request, reply) => {
     return reply(exports.response(settings, request));
@@ -45,9 +45,7 @@ exports.response = (options, request, _preloaded) => {
     stat: null,
     fd: null
   };
-
-  var prepare = _preloaded ? null : internals.prepare;
-
+  
   return request.generateResponse(source, { variety: 'react', marshal: internals.marshal });
 
 };

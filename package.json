@@ -1,6 +1,6 @@
 {
   "name": "hapi-react-handler",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A handler for hapi routes that renders via react-router",
   "keywords": [
     "hapi",

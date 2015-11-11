@@ -6,6 +6,17 @@ This hapi plugin provides a route handler that taps into using react-router, all
 
 **hapi-react-handler** is sponsored by [Pebble{code}](http://pebblecode.com)
 
+### Example
+
+To run the example code, first do `npm install` to install all dependencies, then run the following commands:
+
+```
+> npm run webpack
+> npm run example
+```
+
+Now go to [http://localhost:9000](http://localhost:9000) in your browser to see an isomorphic example.
+
 ### Usage
 
 ```

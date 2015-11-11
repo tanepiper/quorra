@@ -15,8 +15,9 @@ const Links = require('./links.jsx');
 
 // Note: This is a lazy implementation, cannot use createHistory on the
 // server side
-const window = window || {};
-if (window && window.history) {
+const isBrowser = typeof window !== 'undefined';
+
+if (isBrowser) {
   module.exports = <Router history={createHistory()}>
     <Route path="/" component={App}>
       <IndexRoute component={Links}/>

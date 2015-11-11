@@ -11,7 +11,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "lab -t 100"
+    "test": "lab -t 100",
+    "example": "node example",
+    "webpack": "webpack --config ./example/webpack.config.js --progress --profile --colors"
   },
   "author": "Tane Piper <piper.tane@gmail.com> (https://github.com/tanepiper)",
   "license": "MIT",
@@ -41,8 +43,13 @@
     "react-router": "^1.0.0"
   },
   "devDependencies": {
+    "babel-cli": "~6.1.4",
+    "babel-loader": "~6.1.0",
     "code": "^2.0.1",
     "hapi": "^11.1.0",
-    "lab": "^7.2.0"
+    "inert": "~3.2.0",
+    "lab": "^7.2.0",
+    "webpack": "~1.12.4",
+    "webpack-dev-server": "~1.12.1"
   }
 }

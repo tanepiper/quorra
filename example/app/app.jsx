@@ -5,7 +5,10 @@ const React = require('react');
 const App = React.createClass({
   render() {
     return (
-      <div className="foo">Hapi React Handler</div>
+      <div className="example">
+        Welcome to the Hapi React Handler example
+        {this.props.children}
+      </div>
     )
   }
 });

@@ -4,6 +4,7 @@ const React = require('react');
 
 const App = React.createClass({
   getInitialState() {
+    console.log(this.props);
     return Object.assign({}, this.props);
   },
 

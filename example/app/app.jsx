@@ -3,8 +3,10 @@
 const React = require('react');
 
 const App = React.createClass({
+  componentWillMount() {
+    return this.setState(typeof window !== 'undefined' ? window.__INITIAL_STATE__ : {});
+  },
   getInitialState() {
-    console.log(this.props);
     return Object.assign({}, this.props);
   },
 

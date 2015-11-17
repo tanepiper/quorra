@@ -25,22 +25,22 @@ server.register([{
     }
   });
 
-  server.route({
-    method: 'GET',
-    path: '/{route*}',
-    handler: {
-      react: {
-        relativeTo: __dirname + '/app',
-        routerFile: 'router.jsx',
-        layout: 'layout.jsx',
-        props: {
-          '/': 'getIndex',
-          '/hello': 'getHello',
-          '/goodbye': 'getGoodbye',
-          '/foo': 'getFoo'
-        }
-      }
-    }
+  server.method('createPage', (html, initialState) => {
+    console.log(html);
+    return `
+      <!doctype html>
+      <html>
+        <head>
+          <meta charset="utf-8"/>
+          <title>Hapi React Router Example</title>
+        </head>
+        <body>
+          <div id="app-mount">${html}</div>
+          <script id="app-state">${initialState}</script>
+          <!--<script src="/static/js/app.js"></script>-->
+        </body>
+    </html>
+    `
   });
 
   server.method({name : 'getIndex', method: () => {
@@ -55,6 +55,25 @@ server.register([{
   server.method({name : 'getFoo', method: () => {
     return { title: 'OMG FOO!', fooMessage: 'Foo is the best bar'};
   }});
+
+  server.route({
+    method: 'GET',
+    path: '/{route*}',
+    handler: {
+      react: {
+        relativeTo: __dirname + '/app',
+        routerFile: 'router.jsx',
+        layout: 'layout.jsx',
+        //layout: server.methods.createPage,
+        props: {
+          '/': 'getIndex',
+          '/hello': 'getHello',
+          '/goodbye': 'getGoodbye',
+          '/foo': 'getFoo'
+        }
+      }
+    }
+  });
 
   server.start((error) => {
     if (error) {

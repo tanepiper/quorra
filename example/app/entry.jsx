@@ -2,7 +2,9 @@
 
 const React = require('react');
 const ReactDOM = require('react-dom');
+const Router = require('react-router').Router;
+const createHistory = require('history/lib').createHistory;
 
-const Router = require('./router');
+const Routes = require('./routes/AppRoot');
 
-ReactDOM.render(Router, document.getElementById('app-mount'));
+ReactDOM.render(<Router history={createHistory()} routes={Routes} />, document.getElementById('app-mount'));

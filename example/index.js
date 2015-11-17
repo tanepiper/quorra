@@ -52,8 +52,8 @@ server.register([{
   server.method({name : 'getGoodbye', method: () => {
     return {title: 'Hapi React Router Goodbye', goodbyeMessage: 'We are sad to see you go'};
   }});
-  server.method({name : 'getFoo', method: () => {
-    return { title: 'OMG FOO!', fooMessage: 'Foo is the best bar'};
+  server.method({name : 'getAbout', method: () => {
+    return { title: 'About', aboutMessage: 'About message'};
   }});
 
   server.route({
@@ -62,14 +62,14 @@ server.register([{
     handler: {
       react: {
         relativeTo: __dirname + '/app',
-        routerFile: 'router.jsx',
-        layout: 'layout.jsx',
-        //layout: server.methods.createPage,
+        router: 'routes/AppRoot.js',
+        //layout: 'layout.jsx',
+        layout: server.methods.createPage,
         props: {
           '/': 'getIndex',
           '/hello': 'getHello',
           '/goodbye': 'getGoodbye',
-          '/foo': 'getFoo'
+          '/about': 'getAbout'
         }
       }
     }

@@ -2,22 +2,30 @@
 
 const React = require('react');
 
-const App = React.createClass({
+module.exports = React.createClass({
+
   componentWillMount() {
+
     return this.setState(typeof window !== 'undefined' ? window.__INITIAL_STATE__ : {});
   },
+
   getInitialState() {
+
     return Object.assign({}, this.props);
   },
 
   render() {
+
     return (
-      <div className="example">
-        <h1>{this.state.indexMessage}</h1>
-        {this.state.children}
+      <div className="hapi-react-route-welcome">
+        <h1>{this.state.goodbyeMessage}</h1>
+
+        <div>
+          <div>This is the goodbye page</div>
+        </div>
+
+        {this.props.children}
       </div>
     )
   }
 });
-
-module.exports = App;

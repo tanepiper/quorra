@@ -1,5 +1,5 @@
 {
-  "name": "hapi-react-handler",
+  "name": "@tanepiper/hapi-react-handler",
   "version": "1.0.0",
   "description": "A handler for hapi routes that renders via react-router",
   "keywords": [

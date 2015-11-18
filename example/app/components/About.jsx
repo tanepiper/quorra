@@ -3,22 +3,24 @@
 const React = require('react');
 
 module.exports = React.createClass({
-
-  componentWillMount() {
-
-    return this.setState(typeof window !== 'undefined' ? window.__INITIAL_STATE__ : {});
-  },
-
   getInitialState() {
 
     return Object.assign({}, this.props);
   },
 
+  componentDidMount: function () {
+    fetch('/api/about').then((data) => {
+      return data.json()
+    }).then((json) => {
+      this.setState(json);
+    })
+  },
+
   render() {
 
     return (
-      <div className="hapi-react-route-welcome">
-        <h1>{this.state.aboutMessage}</h1>
+      <div className="hapi-react-route-about">
+        <h1>{this.state.message}</h1>
 
         <div>
           <div>This is the about page</div>

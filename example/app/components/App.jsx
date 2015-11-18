@@ -4,21 +4,24 @@ const React = require('react');
 
 module.exports = React.createClass({
 
-  componentWillMount() {
-
-    return this.setState(typeof window !== 'undefined' ? window.__INITIAL_STATE__ : {});
-  },
-
   getInitialState() {
 
     return Object.assign({}, this.props);
+  },
+
+  componentDidMount: function () {
+    fetch('/api/index').then((data) => {
+      return data.json()
+    }).then((json) => {
+      this.setState(json);
+    })
   },
 
   render() {
 
     return (
       <div className="hapi-react-route-welcome">
-        <h1>{this.state.indexMessage}</h1>
+        <h1>{this.state.message}</h1>
 
         <div>
           <div>This example shows how you can create an isomorphic app with Hapi and React-Router</div>

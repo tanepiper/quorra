@@ -25,30 +25,44 @@ server.route({
   path: '/{route*}',
   handler: {
     react: {
-      relativeTo: Path.join(__dirname, 'assets'),
-      routerFile: 'router.jsx',
-      layout: 'layout.jsx',
+      relativeTo: __dirname + '/app',
+      router: 'routes.js',
+      layout: 'layout.jsx' || 'myLayoutMethod',
       props: {
-        title: 'Foobar'
-      },
-      state: server.state.mycookie
+        '/': 'myIndexMethod',
+        '/about': 'myAboutMethod'
+      }
     }
   }
 });
 ```
 
-`Router.jsx` might look something like:
+#### Options
+
+* `relativeTo`: The path to where your react-router application is located
+* `router`: The router file that defines your routes and components
+* `layout`: Either a path to a layout jsx file, or a method name that generates HTML
+* `props`: An object or function that returns a mapping of paths to methods that return data. This
+uses Hapi's in-build [`server.methods`](http://hapijs.com/tutorials/server-methods)
+
+`Router.js` might look something like:
 
 ```
-const React = require('react');
-const Router = require('react-router').Router;
-const Route = require('react-router').Route;
+const App = require('./../components/App.jsx');
+const About = require('./../components/App.jsx');
+const Goodbye = require('./../components/App.jsx');
+const Hello = require('./../components/App.jsx');
+const Links = require('./../components/Links.jsx');
 
-const App = require('./app.jsx');
-
-module.exports = <Router>
-  <Route path="/foo" component={App} />
-</Router>;
+module.exports = [{
+  path: '/', component: App, indexRoute: { component: Links }
+}, {
+  path: '/about', component: About, indexRoute: { component: Links }
+}, {
+  path: '/hello', component: Hello, indexRoute: { component: Links }
+}, {
+  path: '/goodbye', component: Goodbye, indexRoute: { component: Links }
+}];
 ```
 
 `Layout.jsx` mighht look something like:

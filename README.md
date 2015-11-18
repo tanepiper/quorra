@@ -8,7 +8,7 @@ This hapi plugin provides a route handler that taps into using react-router, all
 
 ### Example
 
-To run the example code, first do `npm install` to install all dependencies, then run the following commands:
+To run the example code, first do `npm install @tanepiper/hapi-react-handler` to install all dependencies, then run the following commands:
 
 ```
 > npm run webpack
@@ -20,20 +20,28 @@ Now go to [http://localhost:9000](http://localhost:9000) in your browser to see 
 ### Usage
 
 ```
-server.route({
-  method: 'GET',
-  path: '/{route*}',
-  handler: {
-    react: {
-      relativeTo: __dirname + '/app',
-      router: 'routes.js',
-      layout: 'layout.jsx' || 'myLayoutMethod',
-      props: {
-        '/': 'myIndexMethod',
-        '/about': 'myAboutMethod'
+server.register([{
+  register: require('@tanepiper/hapi-react-handler')
+}], (error) => {
+  if (error) {
+    throw error;
+  }
+
+  server.route({
+    method: 'GET',
+    path: '/{route*}',
+    handler: {
+      react: {
+        relativeTo: `${__dirname}/app`,
+        router: 'routes.js',
+        layout: 'layout.jsx' || 'myLayoutMethod',
+        props: {
+          '/': 'myIndexMethod',
+          '/about': 'myAboutMethod'
+        }
       }
     }
-  }
+  });
 });
 ```
 

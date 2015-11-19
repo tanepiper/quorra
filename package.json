@@ -1,7 +1,7 @@
 {
   "name": "@tanepiper/quorra",
-  "version": "1.0.0",
-  "description": "A handler for hapi routes that renders via react-router",
+  "version": "1.0.1",
+  "description": "Hapi route handler that makes react-router your isomorphic server side router.",
   "keywords": [
     "hapi",
     "hapijs",
@@ -19,10 +19,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tanepiper/hapi-react-handler.git"
+    "url": "https://github.com/tanepiper/quorra.git"
   },
   "bugs": {
-    "url": "https://github.com/tanepiper/hapi-react-handler/issues"
+    "url": "https://github.com/tanepiper/quorra/issues"
   },
   "engines": {
     "node": ">=4.2.x"

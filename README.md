@@ -1,14 +1,14 @@
-# hapi-react-handler
+![Quorra](images/quorra.png)
 
 <a href="http://pebblecode.com"><img src="http://i.imgur.com/mat11pe.png" align="right" /></a>
 
-This hapi plugin provides a route handler that taps into using react-router, allowing you to render isomorphic views.
+[Hapi](https://github.com/hapijs/hapi) route handler that makes [react-router](https://github.com/rackt/react-router) your isomorphic server side router.
 
-**hapi-react-handler** is sponsored by [Pebble{code}](http://pebblecode.com)
+**Quorra** is sponsored by [Pebble{code}](http://pebblecode.com)
 
 ### Example
 
-To run the example code, first do `npm install @tanepiper/hapi-react-handler` to install all dependencies, then run the following commands:
+To run the example code, first do `npm install @tanepiper/quorra` to install all dependencies, then run the following commands:
 
 ```
 > npm run webpack
@@ -21,7 +21,7 @@ Now go to [http://localhost:9000](http://localhost:9000) in your browser to see 
 
 ```
 server.register([{
-  register: require('@tanepiper/hapi-react-handler')
+  register: require('@tanepiper/quorra')
 }], (error) => {
   if (error) {
     throw error;

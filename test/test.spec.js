@@ -300,3 +300,67 @@ lab.experiment('Hapi React Handler multiple sub-path', () => {
     });
   });
 });
+
+lab.experiment('Hapi React Handler specific path with props', () => {
+
+  let server;
+
+  lab.beforeEach((done) => {
+
+    server = new Hapi.Server();
+    server.connection({ port: 9001 });
+
+    server.register([{
+      register: require('./../')
+    }], (error) => {
+
+      if (error) {
+        return done(error);
+      }
+
+      server.method({
+        name: 'getId',
+        method: (req, props) => {
+          return { id: props.params.id };
+        }
+      })
+
+
+      server.route({
+        method: 'GET',
+        path: '/{route*}',
+        handler: {
+          react: {
+            relativeTo: Path.join(__dirname, 'assets'),
+            router: 'router.jsx',
+            layout: 'layout.jsx',
+            props: {
+              '/foo/:id': 'getId'
+            }
+          }
+        }
+      });
+
+      server.start(done);
+    });
+  });
+
+  lab.afterEach((done) => {
+
+    server.stop(done);
+  });
+
+  lab.test('Set up handler on route', (done) => {
+
+    const options = {
+      method: 'GET',
+      url: '/foo/abc'
+    };
+
+    server.inject(options, (response) => {
+
+      Code.expect(response.payload).match(/Hapi React Handler.*abc/);
+      done();
+    });
+  });
+});

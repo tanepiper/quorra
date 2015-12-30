@@ -8,4 +8,5 @@ const App = require('./app.jsx');
 
 module.exports = <Router>
   <Route path="/foo" component={App} />
+  <Route path="/foo/:id" component={App} />
 </Router>;

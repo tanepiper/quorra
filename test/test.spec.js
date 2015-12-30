@@ -31,7 +31,7 @@ lab.experiment('Hapi React Handler', () => {
         handler: {
           react: {
             relativeTo: Path.join(__dirname, 'assets'),
-            routerFile: 'router.jsx'
+            router: 'router.jsx'
           }
         }
       });
@@ -97,16 +97,24 @@ lab.experiment('Hapi React Handler with layout', () => {
         return done(error);
       }
 
+      server.method({
+        name: 'getTitle',
+        method: (req, props) => {
+          return {title: 'Foobar'};
+        }
+      })
+
+
       server.route({
         method: 'GET',
         path: '/{route*}',
         handler: {
           react: {
             relativeTo: Path.join(__dirname, 'assets'),
-            routerFile: 'router.jsx',
+            router: 'router.jsx',
             layout: 'layout.jsx',
             props: {
-              title: 'Foobar'
+              '/foo': 'getTitle'
             }
           }
         }
@@ -160,7 +168,7 @@ lab.experiment('Hapi React Handler specific path', () => {
         handler: {
           react: {
             relativeTo: Path.join(__dirname, 'assets'),
-            routerFile: 'router.jsx'
+            router: 'router.jsx'
           }
         }
       });
@@ -212,7 +220,7 @@ lab.experiment('Hapi React Handler sub-path', () => {
         handler: {
           react: {
             relativeTo: Path.join(__dirname, 'assets'),
-            routerFile: 'router.jsx'
+            router: 'router.jsx'
           }
         }
       });
@@ -264,7 +272,7 @@ lab.experiment('Hapi React Handler multiple sub-path', () => {
         handler: {
           react: {
             relativeTo: Path.join(__dirname, 'assets'),
-            routerFile: 'router.jsx'
+            router: 'router.jsx'
           }
         }
       });
